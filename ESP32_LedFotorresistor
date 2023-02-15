@@ -1,0 +1,41 @@
+/*
+
+Codigo 1: Obtener el valor de luz ambiental
+
+*/
+
+//Identificar el valor ambiental de la luz
+int PinAnalogico=33;
+int valorLDR=0;
+void setup(){
+  Serial.begin(115200);
+}
+void loop(){
+  valorLDR=analogRead(PinAnalogico);
+  Serial.println(valorLDR);
+  delay(400);
+}
+
+/*
+
+Codigo 2 Si se tapa el fotorresistor se enciende el LED
+
+*/
+
+int PinAnalogico=33;
+int valorLDR=0;
+int umbral=1000; // Ejemplo puede ser cualquier valor > al valor de luz ambiental
+int LedPin=32;
+void setup(){
+  pinMode(LedPin, OUTPUT);
+  Serial.begin(115200);
+}
+void loop(){
+  valorLDR=analogRead(PinAnalogico);
+  if (valorLDR >= umbral){
+    digitalWrite(LedPin, LOW);
+  }
+  else{
+    digitalWrite(LedPin, HIGH);
+  }
+}
